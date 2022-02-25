@@ -13,9 +13,6 @@ PICTURE_FIELD = 'lockResponse'
 PICTURE_DIMENSIONS = (512, 512)
 
 
-class BadServerAddressError(Exception): pass
-
-
 def query_server(token, password, server=SERVER_ADDRESS):
     """
     Sends a request to the server, and returns the parsed response.
@@ -79,7 +76,7 @@ def setup_ui():
     Initial function. Set ups the root window and begins the UI.
     """
     window = Tk()
-    window.title('Supersecret Client')
+    window.title('SEC')
     window.resizable(False, False)
     window.configure(padx=10, pady=5)
     a = Label(window, text='Enter your supersecret credentials', name='main_text').grid(columnspan=4)
