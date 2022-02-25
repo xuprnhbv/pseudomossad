@@ -51,6 +51,11 @@ def popup_image(lock_response):
 
 
 def click(window):
+    """
+    Collects data from entries and queries the server. Also handles empty field values etc.
+
+    :param window: the root window
+    """
     token = window.nametowidget('token').get()
     password = window.nametowidget('password').get()
     main_text = window.nametowidget('main_text')
@@ -66,10 +71,13 @@ def click(window):
                 popup_image(response)
             else:
                 main_text.configure(text='Invalid Authentication!', fg='red')
-        except (ConnectionError, requests.exceptions.ConnectionError) as e:
+        except (ConnectionError, requests.exceptions.ConnectionError):
             main_text.configure(text=f'Bad connection :(', fg='red')
 
 def setup_ui():
+    """
+    Initial function. Set ups the root window and begins the UI.
+    """
     window = Tk()
     window.title('Supersecret Client')
     window.resizable(False, False)
@@ -82,4 +90,5 @@ def setup_ui():
     submit = Button(window, text='Submit', command=lambda: click(window)).grid(row=3, columnspan=2)
     window.mainloop()
 
-setup_ui()
+if __name__ == '__main__':
+    setup_ui()
