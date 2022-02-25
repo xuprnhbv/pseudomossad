@@ -29,7 +29,15 @@ def query_server(token, password, server=SERVER_ADDRESS):
     return json.loads(res.content.decode('utf-8'))
 
 def get_answer(token, password):
-    return query_server(token, password)['lockResponse']
+    """
+    Nicer overhaul of query_server.
+
+    :param token: the token to send to the server
+    :param password: the password to send to the server
+    :return: tuple of (is_valid, lock_response)
+    """
+    qu = query_server(token, password)
+    return qu['isValid'], qu[PICTURE_FIELD]
         
 def popup_image(lock_response):
     popup = Toplevel()
