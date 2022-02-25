@@ -60,8 +60,8 @@ def click(window):
         main_text.configure(text='token and password must be filled.', fg='black')
     else:
         try:
-            response = get_answer(token, password)
-            if response:
+            is_valid, response = get_answer(token, password)
+            if is_valid:
                 main_text.configure(text='Successfull Authentication!', fg='green')
                 popup_image(response)
             else:
