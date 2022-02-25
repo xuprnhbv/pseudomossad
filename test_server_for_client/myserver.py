@@ -20,6 +20,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
+        print(f'-------------> Data: {jdata}')
         is_valid = jdata['token'][0] == 'aaa' and jdata['password'][0] == 'bbb' # replaces actual logic
         lock_response = ''
         if is_valid:
