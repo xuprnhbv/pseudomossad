@@ -37,6 +37,11 @@ def get_answer(token, password):
     return qu['isValid'], qu[PICTURE_FIELD]
         
 def popup_image(lock_response):
+    """
+    Creates popup for success.
+
+    :param lock_response: a base64 encoded picture, to be displayed.
+    """
     popup = Toplevel()
     popup.title('Successfull Authentication!')
     popup.resizable(False, False)
